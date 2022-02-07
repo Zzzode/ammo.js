@@ -10,6 +10,8 @@ builds/glue.o
 builds/parser.out
 builds/.cmake
 builds/Testing
+builds/*.ninja*
+builds/compile_commands.json
 node_modules
 *.diff
 
