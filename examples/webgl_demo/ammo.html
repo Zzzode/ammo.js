@@ -51,7 +51,7 @@
           if (!gl) {
             alert("Sorry, no WebGL support :(");
             return;
-          };
+          }
 
           var quaternion = new CubicVR.Quaternion;
 
@@ -123,7 +123,7 @@
               physicsWorker.postMessage(NUM);
               return  
             }
-            if (data.objects.length != NUM) return;
+            if (data.objects.length !== NUM) return;
             for (var i = 0; i < NUM; i++) {
               var physicsObject = data.objects[i];
               var renderObject = boxes[i];

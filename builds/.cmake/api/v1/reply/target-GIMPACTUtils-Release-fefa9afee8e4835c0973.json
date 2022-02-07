@@ -1,0 +1,115 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "bullet/Extras/GIMPACTUtils/libGIMPACTUtils.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"ADD_LIBRARY",
+			"INCLUDE_DIRECTORIES"
+		],
+		"files" : 
+		[
+			"bullet/Extras/GIMPACTUtils/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-O3 -DNDEBUG"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/Users/bytedance/Develop/ammo.js/bullet/Extras/GIMPACT/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/bytedance/Develop/ammo.js/bullet/src"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/bytedance/Develop/ammo.js/bullet/Extras/GIMPACTUtils"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/Users/bytedance/Develop/ammo.js/bullet/Extras/ConvexDecomposition"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"id" : "GIMPACTUtils::@38c3a6e2e375ff1a86d6",
+	"name" : "GIMPACTUtils",
+	"nameOnDisk" : "libGIMPACTUtils.a",
+	"paths" : 
+	{
+		"build" : "bullet/Extras/GIMPACTUtils",
+		"source" : "bullet/Extras/GIMPACTUtils"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "bullet/Extras/GIMPACTUtils/btGImpactConvexDecompositionShape.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "bullet/Extras/GIMPACTUtils/btGImpactConvexDecompositionShape.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

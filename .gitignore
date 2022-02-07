@@ -16,3 +16,9 @@ node_modules
 [._]*.sw[a-p]
 [._]s[a-v][a-z]
 [._]sw[a-p]
+
+# Jetbrains
+.idea
+
+# Vscode
+.vscode

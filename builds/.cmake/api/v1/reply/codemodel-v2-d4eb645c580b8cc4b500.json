@@ -1,0 +1,452 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						11,
+						12,
+						13
+					]
+				},
+				{
+					"build" : "bullet",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-bullet-Release-1b45997748296d322afb.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "bullet"
+				},
+				{
+					"build" : "bullet/Demos",
+					"childIndexes" : 
+					[
+						5
+					],
+					"jsonFile" : "directory-bullet.Demos-Release-1d53605df30f678055e7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "bullet/Demos"
+				},
+				{
+					"build" : "bullet/Extras",
+					"childIndexes" : 
+					[
+						6,
+						7,
+						8,
+						9
+					],
+					"jsonFile" : "directory-bullet.Extras-Release-0c83b36b23c6ded7f759.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras"
+				},
+				{
+					"build" : "bullet/src",
+					"childIndexes" : 
+					[
+						13,
+						14,
+						15,
+						16
+					],
+					"jsonFile" : "directory-bullet.src-Release-89ab85cf3cead8932d23.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "bullet/src"
+				},
+				{
+					"build" : "bullet/Demos/HelloWorld",
+					"jsonFile" : "directory-bullet.Demos.HelloWorld-Release-10d633a9de6884cb7fc5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "bullet/Demos/HelloWorld",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "bullet/Extras/Serialize",
+					"childIndexes" : 
+					[
+						10,
+						11,
+						12
+					],
+					"jsonFile" : "directory-bullet.Extras.Serialize-Release-a50a756b0409197830e6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras/Serialize"
+				},
+				{
+					"build" : "bullet/Extras/ConvexDecomposition",
+					"jsonFile" : "directory-bullet.Extras.ConvexDecomposition-Release-60354991aabc4b513581.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras/ConvexDecomposition",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "bullet/Extras/HACD",
+					"jsonFile" : "directory-bullet.Extras.HACD-Release-ace94d15c9eb5b68f227.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras/HACD",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "bullet/Extras/GIMPACTUtils",
+					"jsonFile" : "directory-bullet.Extras.GIMPACTUtils-Release-d90ce00025a073f3b36a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras/GIMPACTUtils",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "bullet/Extras/Serialize/BulletFileLoader",
+					"jsonFile" : "directory-bullet.Extras.Serialize.BulletFileLoader-Release-468af3dec7e815c9b261.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras/Serialize/BulletFileLoader",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "bullet/Extras/Serialize/BulletXmlWorldImporter",
+					"jsonFile" : "directory-bullet.Extras.Serialize.BulletXmlWorldImporter-Release-bfb1b125764b0729ffd3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras/Serialize/BulletXmlWorldImporter",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "bullet/Extras/Serialize/BulletWorldImporter",
+					"jsonFile" : "directory-bullet.Extras.Serialize.BulletWorldImporter-Release-188a2867b47d70259444.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 6,
+					"projectIndex" : 1,
+					"source" : "bullet/Extras/Serialize/BulletWorldImporter",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "bullet/src/BulletSoftBody",
+					"jsonFile" : "directory-bullet.src.BulletSoftBody-Release-0a0324712efc56eacf23.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "bullet/src/BulletSoftBody",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "bullet/src/BulletCollision",
+					"jsonFile" : "directory-bullet.src.BulletCollision-Release-28f26bfd9983ac0031bf.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "bullet/src/BulletCollision",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "bullet/src/BulletDynamics",
+					"jsonFile" : "directory-bullet.src.BulletDynamics-Release-cc1c783eac8c90dd9de7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "bullet/src/BulletDynamics",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "bullet/src/LinearMath",
+					"jsonFile" : "directory-bullet.src.LinearMath-Release-df6fc3fddc858c1895de.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.4.3"
+					},
+					"parentIndex" : 4,
+					"projectIndex" : 1,
+					"source" : "bullet/src/LinearMath",
+					"targetIndexes" : 
+					[
+						10
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ammo",
+					"targetIndexes" : 
+					[
+						11,
+						12,
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16
+					],
+					"name" : "BULLET_PHYSICS",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 5,
+					"id" : "AppHelloWorld::@d1c69d1955bb3b0eefd8",
+					"jsonFile" : "target-AppHelloWorld-Release-e91fd8932a67f4e76afa.json",
+					"name" : "AppHelloWorld",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 14,
+					"id" : "BulletCollision::@1801c9149aadff39eaa1",
+					"jsonFile" : "target-BulletCollision-Release-fa79fe3bbb6eb19acdab.json",
+					"name" : "BulletCollision",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "BulletDynamics::@31accbb366eee3f3de72",
+					"jsonFile" : "target-BulletDynamics-Release-d3b412daa8770801c12e.json",
+					"name" : "BulletDynamics",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "BulletFileLoader::@9b778fa866302e88ce70",
+					"jsonFile" : "target-BulletFileLoader-Release-d351028bb15cee0f383a.json",
+					"name" : "BulletFileLoader",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 13,
+					"id" : "BulletSoftBody::@0ddfb00ec2139a469bd0",
+					"jsonFile" : "target-BulletSoftBody-Release-b2927f86de93a5689bb9.json",
+					"name" : "BulletSoftBody",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "BulletWorldImporter::@cfb8325563ba4894ca02",
+					"jsonFile" : "target-BulletWorldImporter-Release-4a412b6ef4c45da3de45.json",
+					"name" : "BulletWorldImporter",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "BulletXmlWorldImporter::@4d48a6a48e1c69aaea53",
+					"jsonFile" : "target-BulletXmlWorldImporter-Release-d11618e35cbced2c2c56.json",
+					"name" : "BulletXmlWorldImporter",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "ConvexDecomposition::@434a7da6bd0437688a13",
+					"jsonFile" : "target-ConvexDecomposition-Release-ef6a247a423f5c40b7a4.json",
+					"name" : "ConvexDecomposition",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "GIMPACTUtils::@38c3a6e2e375ff1a86d6",
+					"jsonFile" : "target-GIMPACTUtils-Release-fefa9afee8e4835c0973.json",
+					"name" : "GIMPACTUtils",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "HACD::@47acd984931c212a0340",
+					"jsonFile" : "target-HACD-Release-2ea42ee4bad1d56779e6.json",
+					"name" : "HACD",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 16,
+					"id" : "LinearMath::@08ebe7ab972bc4da5d30",
+					"jsonFile" : "target-LinearMath-Release-e76d7717ac619a2b5c87.json",
+					"name" : "LinearMath",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ammo-bindings::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ammo-bindings-Release-9e812ad1a96c90f6d5b5.json",
+					"name" : "ammo-bindings",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ammo-javascript::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ammo-javascript-Release-cbfec77d02cb3507856f.json",
+					"name" : "ammo-javascript",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ammo-wasm::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ammo-wasm-Release-f6ad2edc73bab812a908.json",
+					"name" : "ammo-wasm",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/bytedance/Develop/ammo.js/builds",
+		"source" : "/Users/bytedance/Develop/ammo.js"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
