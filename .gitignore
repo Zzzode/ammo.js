@@ -8,6 +8,8 @@ builds/glue.cpp
 builds/glue.js
 builds/glue.o
 builds/parser.out
+builds/.cmake
+builds/Testing
 node_modules
 *.diff
 

@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
 set(CMAKE_POLICY_DEFAULT_CMP0077 NEW)
 
-set(CMAKE_TOOLCHAIN_FILE "/Users/bytedance/Develop/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake")
-set(CMAKE_CXX_COMPILER "/Users/bytedance/Develop/emsdk/upstream/emscripten/em++")
-set(CMAKE_C_COMPILER "/Users/bytedance/Develop/emsdk/upstream/emscripten/emcc")
+set($ENV{EMSDK} /Users/bytedance/Develop/emsdk)
+set(CMAKE_CXX_COMPILER $ENV{EMSDK}/upstream/emscripten/em++)
+set(CMAKE_C_COMPILER $ENV{EMSDK}/upstream/emscripten/emcc)
 
 FIND_PACKAGE(Python3)
 set(PYTHON ${Python3_EXECUTABLE} CACHE STRING "Python path")
