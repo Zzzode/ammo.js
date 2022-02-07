@@ -11,12 +11,14 @@ test('stress', t => {
 
   var readMemoryCeiling, malloc;
   if (TEST_MEMORY) {
-    (function() {
+    (function () {
       try {
         STATICTOP;
-        readMemoryCeiling = function() { return STATICTOP + _sbrk.DATASIZE }
+        readMemoryCeiling = function () {
+          return STATICTOP + _sbrk.DATASIZE
+        }
         malloc = _malloc;
-      } catch(e) {
+      } catch (e) {
         var mapping = getClosureMapping();
         var key = '0';
         readMemoryCeiling = eval('(function() { return ' + mapping['STATICTOP'] + ' + ' + mapping['_sbrk$DATASIZE'] + ' })');
@@ -41,7 +43,7 @@ test('stress', t => {
     groundTransform.setIdentity();
     groundTransform.setOrigin(new Ammo.btVector3(0, -56, 0));
 
-    (function() {
+    (function () {
       var mass = 0;
       var localInertia = new Ammo.btVector3(0, 0, 0);
       var myMotionState = new Ammo.btDefaultMotionState(groundTransform);
@@ -56,16 +58,16 @@ test('stress', t => {
     var boxShape = new Ammo.btBoxShape(new Ammo.btVector3(1, 1, 1));
     var coneShape = new Ammo.btConeShape(1, 1); // XXX TODO: add cylindershape too
 
-    [sphereShape, boxShape, coneShape, boxShape, sphereShape, coneShape].forEach(function(shape, i) {
+    [sphereShape, boxShape, coneShape, boxShape, sphereShape, coneShape].forEach(function (shape, i) {
       t.log('creating dynamic shape ' + i);
 
       var startTransform = new Ammo.btTransform();
       startTransform.setIdentity();
       var mass = 1;
       var localInertia = new Ammo.btVector3(0, 0, 0);
-      shape.calculateLocalInertia(mass,localInertia);
+      shape.calculateLocalInertia(mass, localInertia);
 
-      startTransform.setOrigin(new Ammo.btVector3(2+i*0.01, 10+i*2.1, 0));
+      startTransform.setOrigin(new Ammo.btVector3(2 + i * 0.01, 10 + i * 2.1, 0));
 
       var myMotionState = new Ammo.btDefaultMotionState(startTransform);
       var rbInfo = new Ammo.btRigidBodyConstructionInfo(mass, myMotionState, shape, localInertia);
@@ -81,19 +83,19 @@ test('stress', t => {
 
     var startTime = Date.now();
 
-    if (TEST_MEMORY) malloc(5*1024*1024); // stress memory usage
+    if (TEST_MEMORY) malloc(5 * 1024 * 1024); // stress memory usage
 
     var NUM = 150000;
 
     for (var i = 0; i < NUM; i++) {
       if (i === 250 && TEST_MEMORY) memoryStart = readMemoryCeiling();
 
-      dynamicsWorld.stepSimulation(1/60, 10);
+      dynamicsWorld.stepSimulation(1 / 60, 10);
 
-      bodies.forEach(function(body, j) {
+      bodies.forEach(function (body, j) {
         if (body.getMotionState()) {
           body.getMotionState().getWorldTransform(trans);
-          if (i === NUM-1) t.log(j + ' : ' + [trans.getOrigin().x().toFixed(2), trans.getOrigin().y().toFixed(2), trans.getOrigin().z().toFixed(2)]);
+          if (i === NUM - 1) t.log(j + ' : ' + [trans.getOrigin().x().toFixed(2), trans.getOrigin().y().toFixed(2), trans.getOrigin().z().toFixed(2)]);
         }
       });
     }
@@ -102,7 +104,7 @@ test('stress', t => {
 
     if (TEST_MEMORY) t.is(readMemoryCeiling(), memoryStart, 'Memory ceiling must remain stable!');
 
-    t.log('total time: ' + ((endTime-startTime)/1000).toFixed(3));
+    t.log('total time: ' + ((endTime - startTime) / 1000).toFixed(3));
   }
 
   function testDestroy() {

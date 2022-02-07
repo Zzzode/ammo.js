@@ -10,14 +10,12 @@ test('Issue 3: Ammo.btSweepAxis3 doesn\'t seem to work', t => {
   var dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration);
 
 
-
   // XXX interesting part
   var maxProxies = 16384;
-  var aabbmin = new Ammo.btVector3(-1000,-1000,-1000); // world size
-  var aabbmax = new Ammo.btVector3(1000,1000,1000);
+  var aabbmin = new Ammo.btVector3(-1000, -1000, -1000); // world size
+  var aabbmax = new Ammo.btVector3(1000, 1000, 1000);
   var overlappingPairCache = new Ammo.btAxisSweep3(aabbmin, aabbmax, maxProxies);
   // XXX interesting part
-
 
 
   var solver = new Ammo.btSequentialImpulseConstraintSolver();
@@ -32,7 +30,7 @@ test('Issue 3: Ammo.btSweepAxis3 doesn\'t seem to work', t => {
   groundTransform.setIdentity();
   groundTransform.setOrigin(new Ammo.btVector3(0, -56, 0));
 
-  (function() {
+  (function () {
     var mass = 0;
     var isDynamic = mass !== 0;
     var localInertia = new Ammo.btVector3(0, 0, 0);

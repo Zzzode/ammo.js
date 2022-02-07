@@ -12,7 +12,7 @@ test.skip('userData', t => {
 
   var vec = new Ammo.btVector3();
   var quat = new Ammo.btQuaternion();
-  quat.setValue(0, 0, 0 , 1);
+  quat.setValue(0, 0, 0, 1);
 
   // Create box shape
   vec.setValue(0.5, 0.5, 0.5);
@@ -34,13 +34,13 @@ test.skip('userData', t => {
 
   rigidBody.setUserPointer(theValue);
   var userPointer1 = rigidBody.getUserPointer();
-  t.assert(userPointer1.ptr == theValue, "User pointer is not the same" );
+  t.assert(userPointer1.ptr == theValue, "User pointer is not the same");
 
   theValue = 4567;
 
   rigidBody.setUserIndex(theValue);
   var userIndex1 = rigidBody.getUserIndex();
-  t.assert(userIndex1 == theValue, "User index is not the same" );
+  t.assert(userIndex1 == theValue, "User index is not the same");
 
   Ammo.destroy(rigidBody.getCollisionShape());
   Ammo.destroy(motionState);

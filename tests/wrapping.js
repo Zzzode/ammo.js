@@ -40,7 +40,7 @@ test('tests for caching, comparing, wrapping, etc.', t => {
   t.is(Ammo.wrapPointer(vec1ptr, Ammo.btVector3).something, undefined, 'Still there in cache (sanity check)');
 
   // Upcasting
-  (function() {
+  (function () {
     var groundTransform = new Ammo.btTransform();
     groundTransform.setIdentity();
     groundTransform.setOrigin(new Ammo.btVector3(0, -56, 0));
@@ -74,10 +74,10 @@ test('tests for caching, comparing, wrapping, etc.', t => {
   // Callbacks from C++ to JS
 
   // not supported in asm
-  (function() {
+  (function () {
     var calledBack = false;
     var callback = new Ammo.ConcreteContactResultCallback();
-    callback.addSingleResult = function(cp, etc) {
+    callback.addSingleResult = function (cp, etc) {
       calledBack = true;
     };
     t.assert(!calledBack);

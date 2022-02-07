@@ -18,11 +18,13 @@ test('basics', t => {
 
   var cl = new Ammo.ClosestRayResultCallback(vec, vec); // Make sure it is not an abstract base class (regression check)
   var found = false;
-  for (var x in cl) { found = true; } // closure compiler can rename .ptr
+  for (var x in cl) {
+    found = true;
+  } // closure compiler can rename .ptr
   if (!found) throw('zz no wrapped pointer!');
   t.is(typeof Ammo.ClosestRayResultCallback, 'function'); // make sure it was exposed
 
-  (function() {
+  (function () {
     var mass = 0;
     var localInertia = new Ammo.btVector3(0, 0, 0);
     var startTransform = new Ammo.btTransform();
@@ -35,12 +37,16 @@ test('basics', t => {
 
   })();
 
-  (function() {
+  (function () {
     // operators
     var a = new Ammo.btVector3(5, 6, 7);
-    t.is(5, a.x()); t.is(6, a.y()); t.is(7, a.z());
+    t.is(5, a.x());
+    t.is(6, a.y());
+    t.is(7, a.z());
     var result = a.op_mul(3);
-    t.is(15, a.x()); t.is(18, a.y()); t.is(21, a.z());
+    t.is(15, a.x());
+    t.is(18, a.y());
+    t.is(21, a.z());
     t.true(Ammo.compare(a, result));
   })();
 });

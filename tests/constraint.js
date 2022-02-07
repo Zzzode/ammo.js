@@ -22,7 +22,7 @@ test('constraint', t => {
     startTransform1.setIdentity();
     var mass1 = 1;
     var localInertia1 = new Ammo.btVector3(0, 0, 0);
-    shape1.calculateLocalInertia(mass1,localInertia1);
+    shape1.calculateLocalInertia(mass1, localInertia1);
     startTransform1.setOrigin(new Ammo.btVector3(-0.0, 1.0, 0.0));
 
     var myMotionState1 = new Ammo.btDefaultMotionState(startTransform1);
@@ -36,7 +36,7 @@ test('constraint', t => {
     startTransform2.setIdentity();
     var mass2 = 1;
     var localInertia2 = new Ammo.btVector3(0, 0, 0);
-    shape2.calculateLocalInertia(mass2,localInertia2);
+    shape2.calculateLocalInertia(mass2, localInertia2);
 
     startTransform2.setOrigin(new Ammo.btVector3(-0.18, 0.65, 0.));
 
@@ -48,15 +48,18 @@ test('constraint', t => {
     // constraint
     var localA = new Ammo.btTransform();
     var localB = new Ammo.btTransform();
-    localA.setIdentity(); localB.setIdentity();
-    localA.getBasis().setEulerZYX(0,0,-Math.PI/4); localA.setOrigin(new Ammo.btVector3((-0.18), (-0.10), (0.)));
-    localB.getBasis().setEulerZYX(0,0,-Math.PI/4); localB.setOrigin(new Ammo.btVector3((0.), (0.22), (0.)));
+    localA.setIdentity();
+    localB.setIdentity();
+    localA.getBasis().setEulerZYX(0, 0, -Math.PI / 4);
+    localA.setOrigin(new Ammo.btVector3((-0.18), (-0.10), (0.)));
+    localB.getBasis().setEulerZYX(0, 0, -Math.PI / 4);
+    localB.setOrigin(new Ammo.btVector3((0.), (0.22), (0.)));
     coneC = new Ammo.btConeTwistConstraint(body1, body2, localA, localB);
-    coneC.setLimit(Math.PI/4, Math.PI/4, 0);
+    coneC.setLimit(Math.PI / 4, Math.PI / 4, 0);
     dynamicsWorld.addConstraint(coneC, true);
 
     function check(array) {
-      array.forEach(function(value) {
+      array.forEach(function (value) {
         t.assert(!isNaN(value), 'NaN appeared!');
       });
     }
@@ -65,7 +68,7 @@ test('constraint', t => {
     var trans = new Ammo.btTransform(); // taking this out of the loop below us reduces the leaking
     for (var i = 0; i < 10; i++) {
 
-      dynamicsWorld.stepSimulation(1/60, 10);
+      dynamicsWorld.stepSimulation(1 / 60, 10);
       if (body1.getMotionState()) {
         body1.getMotionState().getWorldTransform(trans);
         var vals = [trans.getOrigin().x().toFixed(2), trans.getOrigin().y().toFixed(2), trans.getOrigin().z().toFixed(2)];

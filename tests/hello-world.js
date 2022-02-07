@@ -1,5 +1,5 @@
 const test = require('ava');
-const { readFileSync } = require('fs');
+const {readFileSync} = require('fs');
 const loadAmmo = require('./helpers/load-ammo.js');
 
 test('hello world', async t => {
