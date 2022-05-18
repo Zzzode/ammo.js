@@ -15,18 +15,17 @@ subject to the following restrictions:
 #ifndef GLUT_STUFF_H
 #define GLUT_STUFF_H
 
-#ifdef _WIN32//for glut.h
+#ifdef _WIN32  //for glut.h
 #include <windows.h>
 #endif
 
 //think different
-#if defined(__APPLE__) && !defined (VMDMESA)
+#if defined(__APPLE__) && !defined(VMDMESA)
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
 #include <GLUT/glut.h>
 #else
-
 
 #ifdef _WINDOWS
 #include <windows.h>
@@ -35,41 +34,39 @@ subject to the following restrictions:
 #else
 #include <GL/gl.h>
 #include <GL/glut.h>
-#endif //_WINDOWS
-#endif //APPLE
+#endif  //_WINDOWS
+#endif  //APPLE
 
 #ifdef _WINDOWS
-#define BT_ACTIVE_ALT   VK_LMENU
+#define BT_ACTIVE_ALT VK_LMENU
 #define BT_ACTIVE_SHIFT VK_LSHIFT
 #else
 #define BT_KEY_K 'k'
-#define BT_KEY_LEFT			GLUT_KEY_LEFT
-#define BT_KEY_RIGHT		GLUT_KEY_RIGHT
-#define BT_KEY_UP			GLUT_KEY_UP
-#define BT_KEY_DOWN			GLUT_KEY_DOWN
-#define	BT_KEY_F1			GLUT_KEY_F1
-#define	BT_KEY_F2			GLUT_KEY_F2
-#define	BT_KEY_F3			GLUT_KEY_F3
-#define	BT_KEY_F4			GLUT_KEY_F4
-#define	BT_KEY_F5			GLUT_KEY_F5
-#define BT_KEY_PAGEUP		GLUT_KEY_PAGE_UP
-#define BT_KEY_PAGEDOWN		GLUT_KEY_PAGE_DOWN
-#define BT_KEY_END			GLUT_KEY_END
-#define BT_KEY_HOME			GLUT_KEY_HOME
-#define BT_ACTIVE_ALT		GLUT_ACTIVE_ALT
-#define	BT_ACTIVE_CTRL		GLUT_ACTIVE_ALT
-#define BT_ACTIVE_SHIFT		GLUT_ACTIVE_SHIFT
+#define BT_KEY_LEFT GLUT_KEY_LEFT
+#define BT_KEY_RIGHT GLUT_KEY_RIGHT
+#define BT_KEY_UP GLUT_KEY_UP
+#define BT_KEY_DOWN GLUT_KEY_DOWN
+#define BT_KEY_F1 GLUT_KEY_F1
+#define BT_KEY_F2 GLUT_KEY_F2
+#define BT_KEY_F3 GLUT_KEY_F3
+#define BT_KEY_F4 GLUT_KEY_F4
+#define BT_KEY_F5 GLUT_KEY_F5
+#define BT_KEY_PAGEUP GLUT_KEY_PAGE_UP
+#define BT_KEY_PAGEDOWN GLUT_KEY_PAGE_DOWN
+#define BT_KEY_END GLUT_KEY_END
+#define BT_KEY_HOME GLUT_KEY_HOME
+#define BT_ACTIVE_ALT GLUT_ACTIVE_ALT
+#define BT_ACTIVE_CTRL GLUT_ACTIVE_ALT
+#define BT_ACTIVE_SHIFT GLUT_ACTIVE_SHIFT
 #endif
 
 #if BT_USE_FREEGLUT
-#include "GL/freeglut_ext.h" //to be able to return from glutMainLoop()
+#include "GL/freeglut_ext.h"  //to be able to return from glutMainLoop()
 #endif
-
-
 
 class DemoApplication;
 
-int glutmain(int argc, char **argv,int width,int height,const char* title,DemoApplication* demoApp);
+int glutmain(int argc, char** argv, int width, int height, const char* title, DemoApplication* demoApp);
 
 #if defined(BT_USE_DOUBLE_PRECISION)
 #define btglLoadMatrix glLoadMatrixd
@@ -83,4 +80,4 @@ int glutmain(int argc, char **argv,int width,int height,const char* title,DemoAp
 #define btglVertex3 glVertex3d
 #endif
 
-#endif //GLUT_STUFF_H
+#endif  //GLUT_STUFF_H

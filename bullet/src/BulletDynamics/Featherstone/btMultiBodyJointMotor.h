@@ -24,12 +24,9 @@ struct btSolverInfo;
 class btMultiBodyJointMotor : public btMultiBodyConstraint
 {
 protected:
-
-	
-	btScalar	m_desiredVelocity;
+	btScalar m_desiredVelocity;
 
 public:
-
 	btMultiBodyJointMotor(btMultiBody* body, int link, btScalar desiredVelocity, btScalar maxMotorImpulse);
 	virtual ~btMultiBodyJointMotor();
 
@@ -37,11 +34,8 @@ public:
 	virtual int getIslandIdB() const;
 
 	virtual void createConstraintRows(btMultiBodyConstraintArray& constraintRows,
-		btMultiBodyJacobianData& data,
-		const btContactSolverInfo& infoGlobal);
-	
-	
+									  btMultiBodyJacobianData& data,
+									  const btContactSolverInfo& infoGlobal);
 };
 
-#endif //BT_MULTIBODY_JOINT_MOTOR_H
-
+#endif  //BT_MULTIBODY_JOINT_MOTOR_H

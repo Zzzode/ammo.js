@@ -18,7 +18,6 @@ subject to the following restrictions:
 
 #include "BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
 
-
 class btMultiBody;
 class btMultiBodyConstraint;
 class btMultiBodyConstraintSolver;
@@ -32,25 +31,25 @@ protected:
 	btAlignedObjectArray<btMultiBody*> m_multiBodies;
 	btAlignedObjectArray<btMultiBodyConstraint*> m_multiBodyConstraints;
 	btAlignedObjectArray<btMultiBodyConstraint*> m_sortedMultiBodyConstraints;
-	btMultiBodyConstraintSolver*	m_multiBodyConstraintSolver;
-	MultiBodyInplaceSolverIslandCallback*	m_solverMultiBodyIslandCallback;
+	btMultiBodyConstraintSolver* m_multiBodyConstraintSolver;
+	MultiBodyInplaceSolverIslandCallback* m_solverMultiBodyIslandCallback;
 
-	virtual void	calculateSimulationIslands();
-	virtual void	updateActivationState(btScalar timeStep);
-	virtual void	solveConstraints(btContactSolverInfo& solverInfo);
-	virtual void	integrateTransforms(btScalar timeStep);
+	virtual void calculateSimulationIslands();
+	virtual void updateActivationState(btScalar timeStep);
+	virtual void solveConstraints(btContactSolverInfo& solverInfo);
+	virtual void integrateTransforms(btScalar timeStep);
+
 public:
+	btMultiBodyDynamicsWorld(btDispatcher* dispatcher, btBroadphaseInterface* pairCache, btMultiBodyConstraintSolver* constraintSolver, btCollisionConfiguration* collisionConfiguration);
 
-	btMultiBodyDynamicsWorld(btDispatcher* dispatcher,btBroadphaseInterface* pairCache,btMultiBodyConstraintSolver* constraintSolver,btCollisionConfiguration* collisionConfiguration);
-	
-	virtual ~btMultiBodyDynamicsWorld ();
+	virtual ~btMultiBodyDynamicsWorld();
 
-	virtual void	addMultiBody(btMultiBody* body, short group= btBroadphaseProxy::DefaultFilter, short mask=btBroadphaseProxy::AllFilter);
+	virtual void addMultiBody(btMultiBody* body, short group = btBroadphaseProxy::DefaultFilter, short mask = btBroadphaseProxy::AllFilter);
 
-	virtual void	removeMultiBody(btMultiBody* body);
+	virtual void removeMultiBody(btMultiBody* body);
 
-	virtual void	addMultiBodyConstraint( btMultiBodyConstraint* constraint);
+	virtual void addMultiBodyConstraint(btMultiBodyConstraint* constraint);
 
-	virtual void	removeMultiBodyConstraint( btMultiBodyConstraint* constraint);
+	virtual void removeMultiBodyConstraint(btMultiBodyConstraint* constraint);
 };
-#endif //BT_MULTIBODY_DYNAMICS_WORLD_H
+#endif  //BT_MULTIBODY_DYNAMICS_WORLD_H

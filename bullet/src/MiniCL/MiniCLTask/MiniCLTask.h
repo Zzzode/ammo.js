@@ -21,42 +21,39 @@ subject to the following restrictions:
 
 #include "LinearMath/btAlignedAllocator.h"
 
-
 #define MINICL_MAX_ARGLENGTH (sizeof(void*))
 #define MINI_CL_MAX_ARG 16
 #define MINI_CL_MAX_KERNEL_NAME 256
 
 struct MiniCLKernel;
 
-ATTRIBUTE_ALIGNED16(struct) MiniCLTaskDesc
+ATTRIBUTE_ALIGNED16(struct)
+MiniCLTaskDesc
 {
 	BT_DECLARE_ALIGNED_ALLOCATOR();
 
 	MiniCLTaskDesc()
 	{
-		for (int i=0;i<MINI_CL_MAX_ARG;i++)
+		for (int i = 0; i < MINI_CL_MAX_ARG; i++)
 		{
-			m_argSizes[i]=0;
+			m_argSizes[i] = 0;
 		}
 	}
 
-	uint32_t		m_taskId;
+	uint32_t m_taskId;
 
-	uint32_t		m_firstWorkUnit;
-	uint32_t		m_lastWorkUnit;
+	uint32_t m_firstWorkUnit;
+	uint32_t m_lastWorkUnit;
 
-	MiniCLKernel*	m_kernel;
+	MiniCLKernel* m_kernel;
 
-	void*			m_argData[MINI_CL_MAX_ARG];
-	int				m_argSizes[MINI_CL_MAX_ARG];
+	void* m_argData[MINI_CL_MAX_ARG];
+	int m_argSizes[MINI_CL_MAX_ARG];
 };
 
 extern "C" int gMiniCLNumOutstandingTasks;
 
+void processMiniCLTask(void* userPtr, void* lsMemory);
+void* createMiniCLLocalStoreMemory();
 
-void	processMiniCLTask(void* userPtr, void* lsMemory);
-void*	createMiniCLLocalStoreMemory();
-
-
-#endif //MINICL__TASK_H
-
+#endif  //MINICL__TASK_H

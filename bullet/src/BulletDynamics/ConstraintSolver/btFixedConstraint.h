@@ -18,32 +18,31 @@ subject to the following restrictions:
 
 #include "btTypedConstraint.h"
 
-ATTRIBUTE_ALIGNED16(class) btFixedConstraint : public btTypedConstraint
+ATTRIBUTE_ALIGNED16(class)
+btFixedConstraint : public btTypedConstraint
 {
 	btVector3 m_pivotInA;
 	btVector3 m_pivotInB;
 	btQuaternion m_relTargetAB;
 
 public:
-	btFixedConstraint(btRigidBody& rbA,btRigidBody& rbB, const btTransform& frameInA,const btTransform& frameInB);
-	
+	btFixedConstraint(btRigidBody & rbA, btRigidBody & rbB, const btTransform& frameInA, const btTransform& frameInB);
+
 	virtual ~btFixedConstraint();
 
-	
-	virtual void getInfo1 (btConstraintInfo1* info);
+	virtual void getInfo1(btConstraintInfo1 * info);
 
-	virtual void getInfo2 (btConstraintInfo2* info);
+	virtual void getInfo2(btConstraintInfo2 * info);
 
-	virtual	void	setParam(int num, btScalar value, int axis = -1)
+	virtual void setParam(int num, btScalar value, int axis = -1)
 	{
 		btAssert(0);
 	}
-	virtual	btScalar getParam(int num, int axis = -1) const
+	virtual btScalar getParam(int num, int axis = -1) const
 	{
 		btAssert(0);
 		return 0.f;
 	}
-
 };
 
-#endif //BT_FIXED_CONSTRAINT_H
+#endif  //BT_FIXED_CONSTRAINT_H

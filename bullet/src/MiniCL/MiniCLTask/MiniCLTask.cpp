@@ -13,14 +13,12 @@ subject to the following restrictions:
 
 */
 
-
 #include "MiniCLTask.h"
 #include "BulletMultiThreaded/PlatformDefinitions.h"
 #include "BulletMultiThreaded/SpuFakeDma.h"
 #include "LinearMath/btMinMax.h"
 #include "MiniCLTask.h"
 #include "MiniCL/MiniCLTaskScheduler.h"
-
 
 #ifdef __SPU__
 #include <spu_printf.h>
@@ -33,9 +31,7 @@ int gMiniCLNumOutstandingTasks = 0;
 
 struct MiniCLTask_LocalStoreMemory
 {
-	
 };
-
 
 //-- MAIN METHOD
 void processMiniCLTask(void* userPtr, void* lsMemory)
@@ -47,19 +43,17 @@ void processMiniCLTask(void* userPtr, void* lsMemory)
 	MiniCLTaskDesc* taskDescPtr = (MiniCLTaskDesc*)userPtr;
 	MiniCLTaskDesc& taskDesc = *taskDescPtr;
 
-	for (unsigned int i=taskDesc.m_firstWorkUnit;i<taskDesc.m_lastWorkUnit;i++)
+	for (unsigned int i = taskDesc.m_firstWorkUnit; i < taskDesc.m_lastWorkUnit; i++)
 	{
 		taskDesc.m_kernel->m_launcher(&taskDesc, i);
 	}
 
-//	printf("Compute Unit[%d] executed kernel %d work items [%d..%d)\n",taskDesc.m_taskId,taskDesc.m_kernelProgramId,taskDesc.m_firstWorkUnit,taskDesc.m_lastWorkUnit);
-	
+	//	printf("Compute Unit[%d] executed kernel %d work items [%d..%d)\n",taskDesc.m_taskId,taskDesc.m_kernelProgramId,taskDesc.m_firstWorkUnit,taskDesc.m_lastWorkUnit);
 }
 
+#if defined(__CELLOS_LV2__) || defined(LIBSPE2)
 
-#if defined(__CELLOS_LV2__) || defined (LIBSPE2)
-
-ATTRIBUTE_ALIGNED16(MiniCLTask_LocalStoreMemory	gLocalStoreMemory);
+ATTRIBUTE_ALIGNED16(MiniCLTask_LocalStoreMemory gLocalStoreMemory);
 
 void* createMiniCLLocalStoreMemory()
 {

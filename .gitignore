@@ -26,3 +26,5 @@ node_modules
 
 # Vscode
 .vscode
+
+.DS_Store

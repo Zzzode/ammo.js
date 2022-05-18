@@ -20,20 +20,19 @@ subject to the following restrictions:
 #include "btMultiBodyLinkCollider.h"
 #include "BulletCollision/CollisionDispatch/btCollisionObject.h"
 
-
 btMultiBodyJointMotor::btMultiBodyJointMotor(btMultiBody* body, int link, btScalar desiredVelocity, btScalar maxMotorImpulse)
-	:btMultiBodyConstraint(body,body,link,link,1,true),
-	m_desiredVelocity(desiredVelocity)	
+	: btMultiBodyConstraint(body, body, link, link, 1, true),
+	  m_desiredVelocity(desiredVelocity)
 {
 	m_maxAppliedImpulse = maxMotorImpulse;
 	// the data.m_jacobians never change, so may as well
-    // initialize them here
-        
-    // note: we rely on the fact that data.m_jacobians are
-    // always initialized to zero by the Constraint ctor
+	// initialize them here
 
-    // row 0: the lower bound
-    jacobianA(0)[6 + link] = 1;
+	// note: we rely on the fact that data.m_jacobians are
+	// always initialized to zero by the Constraint ctor
+
+	// row 0: the lower bound
+	jacobianA(0)[6 + link] = 1;
 }
 btMultiBodyJointMotor::~btMultiBodyJointMotor()
 {
@@ -44,7 +43,7 @@ int btMultiBodyJointMotor::getIslandIdA() const
 	btMultiBodyLinkCollider* col = m_bodyA->getBaseCollider();
 	if (col)
 		return col->getIslandTag();
-	for (int i=0;i<m_bodyA->getNumLinks();i++)
+	for (int i = 0; i < m_bodyA->getNumLinks(); i++)
 	{
 		if (m_bodyA->getLink(i).m_collider)
 			return m_bodyA->getLink(i).m_collider->getIslandTag();
@@ -58,7 +57,7 @@ int btMultiBodyJointMotor::getIslandIdB() const
 	if (col)
 		return col->getIslandTag();
 
-	for (int i=0;i<m_bodyB->getNumLinks();i++)
+	for (int i = 0; i < m_bodyB->getNumLinks(); i++)
 	{
 		col = m_bodyB->getLink(i).m_collider;
 		if (col)
@@ -67,23 +66,18 @@ int btMultiBodyJointMotor::getIslandIdB() const
 	return -1;
 }
 
-
 void btMultiBodyJointMotor::createConstraintRows(btMultiBodyConstraintArray& constraintRows,
-		btMultiBodyJacobianData& data,
-		const btContactSolverInfo& infoGlobal)
+												 btMultiBodyJacobianData& data,
+												 const btContactSolverInfo& infoGlobal)
 {
-    // only positions need to be updated -- data.m_jacobians and force
-    // directions were set in the ctor and never change.
-    
-  
+	// only positions need to be updated -- data.m_jacobians and force
+	// directions were set in the ctor and never change.
 
-	for (int row=0;row<getNumRows();row++)
+	for (int row = 0; row < getNumRows(); row++)
 	{
 		btMultiBodySolverConstraint& constraintRow = constraintRows.expandNonInitializing();
-		
-		btScalar penetration = 0;
-		fillConstraintRowMultiBodyMultiBody(constraintRow,data,jacobianA(row),jacobianB(row),infoGlobal,m_desiredVelocity,-m_maxAppliedImpulse,m_maxAppliedImpulse);
-	}
 
+		btScalar penetration = 0;
+		fillConstraintRowMultiBodyMultiBody(constraintRow, data, jacobianA(row), jacobianB(row), infoGlobal, m_desiredVelocity, -m_maxAppliedImpulse, m_maxAppliedImpulse);
+	}
 }
-	

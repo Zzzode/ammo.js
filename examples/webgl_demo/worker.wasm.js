@@ -1,5 +1,4 @@
-
-var Module = { TOTAL_MEMORY: 256*1024*1024 };
+var Module = {TOTAL_MEMORY: 256 * 1024 * 1024};
 
 importScripts('../../builds/ammo.wasm.js');
 
@@ -7,7 +6,7 @@ var config = {
   locateFile: () => '../../builds/ammo.wasm.wasm'
 }
 
-Ammo(config).then(function(Ammo) {
+Ammo(config).then(function (Ammo) {
   var NUM = 0, NUMRANGE = [];
 
   // Bullet-interfacing code
@@ -27,7 +26,7 @@ Ammo(config).then(function(Ammo) {
   groundTransform.setIdentity();
   groundTransform.setOrigin(new Ammo.btVector3(0, -56, 0));
 
-  (function() {
+  (function () {
     var mass = 0;
     var localInertia = new Ammo.btVector3(0, 0, 0);
     var myMotionState = new Ammo.btDefaultMotionState(groundTransform);
@@ -41,17 +40,17 @@ Ammo(config).then(function(Ammo) {
   var boxShape = new Ammo.btBoxShape(new Ammo.btVector3(1, 1, 1));
 
   function resetPositions() {
-    var side = Math.ceil(Math.pow(NUM, 1/3));
+    var side = Math.ceil(Math.pow(NUM, 1 / 3));
     var i = 1;
     for (var x = 0; x < side; x++) {
       for (var y = 0; y < side; y++) {
         for (var z = 0; z < side; z++) {
-          if (i == bodies.length) break;
+          if (i === bodies.length) break;
           var body = bodies[i++];
           var origin = body.getWorldTransform().getOrigin();
-          origin.setX((x - side/2)*(2.2 + Math.random()));
+          origin.setX((x - side / 2) * (2.2 + Math.random()));
           origin.setY(y * (3 + Math.random()));
-          origin.setZ((z - side/2)*(2.2 + Math.random()) - side - 3);
+          origin.setZ((z - side / 2) * (2.2 + Math.random()) - side - 3);
           body.activate();
           var rotation = body.getWorldTransform().getRotation();
           rotation.setX(1);
@@ -64,7 +63,7 @@ Ammo(config).then(function(Ammo) {
   }
 
   function startUp() {
-    NUMRANGE.forEach(function(i) {
+    NUMRANGE.forEach(function (i) {
       var startTransform = new Ammo.btTransform();
       startTransform.setIdentity();
       var mass = 1;
@@ -99,6 +98,7 @@ Ammo(config).then(function(Ammo) {
   }
 
   var nextTimeToRestart = 0;
+
   function timeToRestart() { // restart if at least one is inactive - the scene is starting to get boring
     if (nextTimeToRestart) {
       if (Date.now() >= nextTimeToRestart) {
@@ -126,21 +126,21 @@ Ammo(config).then(function(Ammo) {
 
     var alpha;
     if (meanDt > 0) {
-      alpha = Math.min(0.1, dt/1000);
+      alpha = Math.min(0.1, dt / 1000);
     } else {
       alpha = 0.1; // first run
     }
-    meanDt = alpha*dt + (1-alpha)*meanDt;
+    meanDt = alpha * dt + (1 - alpha) * meanDt;
 
-    var alpha2 = 1/frame++;
-    meanDt2 = alpha2*dt + (1-alpha2)*meanDt2;
+    var alpha2 = 1 / frame++;
+    meanDt2 = alpha2 * dt + (1 - alpha2) * meanDt2;
 
-    var data = { objects: [], currFPS: Math.round(1000/meanDt), allFPS: Math.round(1000/meanDt2) };
+    var data = {objects: [], currFPS: Math.round(1000 / meanDt), allFPS: Math.round(1000 / meanDt2)};
 
     // Read bullet data into JS objects
     for (var i = 0; i < NUM; i++) {
       var object = [];
-      readBulletObject(i+1, object);
+      readBulletObject(i + 1, object);
       data.objects[i] = object;
     }
 
@@ -151,10 +151,10 @@ Ammo(config).then(function(Ammo) {
 
   var interval = null;
 
-  onmessage = function(event) {
+  onmessage = function (event) {
     NUM = event.data;
     NUMRANGE.length = 0;
-    while (NUMRANGE.length < NUM) NUMRANGE.push(NUMRANGE.length+1);
+    while (NUMRANGE.length < NUM) NUMRANGE.push(NUMRANGE.length + 1);
 
     frame = 1;
     meanDt = meanDt2 = 0;
@@ -162,6 +162,7 @@ Ammo(config).then(function(Ammo) {
     startUp();
 
     var last = Date.now();
+
     function mainLoop() {
       var now = Date.now();
       simulate(now - last);
@@ -169,7 +170,7 @@ Ammo(config).then(function(Ammo) {
     }
 
     if (interval) clearInterval(interval);
-    interval = setInterval(mainLoop, 1000/60);
+    interval = setInterval(mainLoop, 1000 / 60);
   }
   postMessage({isReady: true});
 });

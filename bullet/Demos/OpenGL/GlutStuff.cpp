@@ -20,33 +20,31 @@ subject to the following restrictions:
 //glut is C code, this global gDemoApplication links glut to the C++ demo
 static DemoApplication* gDemoApplication = 0;
 
-
 #include "GlutStuff.h"
 
-static	void glutKeyboardCallback(unsigned char key, int x, int y)
+static void glutKeyboardCallback(unsigned char key, int x, int y)
 {
-	gDemoApplication->keyboardCallback(key,x,y);
+	gDemoApplication->keyboardCallback(key, x, y);
 }
 
-static	void glutKeyboardUpCallback(unsigned char key, int x, int y)
+static void glutKeyboardUpCallback(unsigned char key, int x, int y)
 {
-  gDemoApplication->keyboardUpCallback(key,x,y);
+	gDemoApplication->keyboardUpCallback(key, x, y);
 }
 
 static void glutSpecialKeyboardCallback(int key, int x, int y)
 {
-	gDemoApplication->specialKeyboard(key,x,y);
+	gDemoApplication->specialKeyboard(key, x, y);
 }
 
 static void glutSpecialKeyboardUpCallback(int key, int x, int y)
 {
-	gDemoApplication->specialKeyboardUp(key,x,y);
+	gDemoApplication->specialKeyboardUp(key, x, y);
 }
-
 
 static void glutReshapeCallback(int w, int h)
 {
-	gDemoApplication->reshape(w,h);
+	gDemoApplication->reshape(w, h);
 }
 
 static void glutMoveAndDisplayCallback()
@@ -56,36 +54,33 @@ static void glutMoveAndDisplayCallback()
 
 static void glutMouseFuncCallback(int button, int state, int x, int y)
 {
-	gDemoApplication->mouseFunc(button,state,x,y);
+	gDemoApplication->mouseFunc(button, state, x, y);
 }
 
-
-static void	glutMotionFuncCallback(int x,int y)
+static void glutMotionFuncCallback(int x, int y)
 {
-	gDemoApplication->mouseMotionFunc(x,y);
+	gDemoApplication->mouseMotionFunc(x, y);
 }
-
 
 static void glutDisplayCallback(void)
 {
 	gDemoApplication->displayCallback();
 }
 
-
-int glutmain(int argc, char **argv,int width,int height,const char* title,DemoApplication* demoApp) {
-    
+int glutmain(int argc, char** argv, int width, int height, const char* title, DemoApplication* demoApp)
+{
 	gDemoApplication = demoApp;
 
 	glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
-    glutInitWindowPosition(width/2, height/2);
-    glutInitWindowSize(width, height);
-    glutCreateWindow(title);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_STENCIL);
+	glutInitWindowPosition(width / 2, height / 2);
+	glutInitWindowSize(width, height);
+	glutCreateWindow(title);
 #ifdef BT_USE_FREEGLUT
-	glutSetOption (GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
+	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 #endif
 
-    gDemoApplication->myinit();
+	gDemoApplication->myinit();
 
 	glutKeyboardFunc(glutKeyboardCallback);
 	glutKeyboardUpFunc(glutKeyboardUpCallback);
@@ -93,28 +88,25 @@ int glutmain(int argc, char **argv,int width,int height,const char* title,DemoAp
 	glutSpecialUpFunc(glutSpecialKeyboardUpCallback);
 
 	glutReshapeFunc(glutReshapeCallback);
-    //createMenu();
+	//createMenu();
 	glutIdleFunc(glutMoveAndDisplayCallback);
 	glutMouseFunc(glutMouseFuncCallback);
 	glutPassiveMotionFunc(glutMotionFuncCallback);
 	glutMotionFunc(glutMotionFuncCallback);
-	glutDisplayFunc( glutDisplayCallback );
+	glutDisplayFunc(glutDisplayCallback);
 
 	glutMoveAndDisplayCallback();
 
-//enable vsync to avoid tearing on Apple (todo: for Windows)
+	//enable vsync to avoid tearing on Apple (todo: for Windows)
 
-#if defined(__APPLE__) && !defined (VMDMESA)
-int swap_interval = 1;
-CGLContextObj cgl_context = CGLGetCurrentContext();
-CGLSetParameter(cgl_context, kCGLCPSwapInterval, &swap_interval);
+#if defined(__APPLE__) && !defined(VMDMESA)
+	int swap_interval = 1;
+	CGLContextObj cgl_context = CGLGetCurrentContext();
+	CGLSetParameter(cgl_context, kCGLCPSwapInterval, &swap_interval);
 #endif
 
-
-	
-    glutMainLoop();
-    return 0;
+	glutMainLoop();
+	return 0;
 }
 
-
-#endif //_WINDOWS
+#endif  //_WINDOWS

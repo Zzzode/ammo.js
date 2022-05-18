@@ -23,15 +23,13 @@ subject to the following restrictions:
 
 class btMLCPSolver : public btSequentialImpulseConstraintSolver
 {
-
 protected:
-	
 	btMatrixXu m_A;
 	btVectorXu m_b;
 	btVectorXu m_x;
 	btVectorXu m_lo;
 	btVectorXu m_hi;
-	
+
 	///when using 'split impulse' we solve two separate (M)LCPs
 	btVectorXu m_bSplit;
 	btVectorXu m_xSplit;
@@ -43,8 +41,8 @@ protected:
 	btMLCPSolverInterface* m_solver;
 	int m_fallback;
 
-	virtual btScalar solveGroupCacheFriendlySetup(btCollisionObject** bodies, int numBodies, btPersistentManifold** manifoldPtr, int numManifolds,btTypedConstraint** constraints,int numConstraints,const btContactSolverInfo& infoGlobal,btIDebugDraw* debugDrawer);
-	virtual btScalar solveGroupCacheFriendlyIterations(btCollisionObject** bodies ,int numBodies,btPersistentManifold** manifoldPtr, int numManifolds,btTypedConstraint** constraints,int numConstraints,const btContactSolverInfo& infoGlobal,btIDebugDraw* debugDrawer);
+	virtual btScalar solveGroupCacheFriendlySetup(btCollisionObject** bodies, int numBodies, btPersistentManifold** manifoldPtr, int numManifolds, btTypedConstraint** constraints, int numConstraints, const btContactSolverInfo& infoGlobal, btIDebugDraw* debugDrawer);
+	virtual btScalar solveGroupCacheFriendlyIterations(btCollisionObject** bodies, int numBodies, btPersistentManifold** manifoldPtr, int numManifolds, btTypedConstraint** constraints, int numConstraints, const btContactSolverInfo& infoGlobal, btIDebugDraw* debugDrawer);
 	virtual void createMLCP(const btContactSolverInfo& infoGlobal);
 	virtual void createMLCPFast(const btContactSolverInfo& infoGlobal);
 
@@ -52,8 +50,7 @@ protected:
 	virtual bool solveMLCP(const btContactSolverInfo& infoGlobal);
 
 public:
-
-	btMLCPSolver(	 btMLCPSolverInterface* solver);
+	btMLCPSolver(btMLCPSolverInterface* solver);
 	virtual ~btMLCPSolver();
 
 	void setMLCPSolver(btMLCPSolverInterface* solver)
@@ -70,12 +67,10 @@ public:
 		m_fallback = num;
 	}
 
-	virtual btConstraintSolverType	getSolverType() const
+	virtual btConstraintSolverType getSolverType() const
 	{
 		return BT_MLCP_SOLVER;
 	}
-
 };
 
-
-#endif //BT_MLCP_SOLVER_H
+#endif  //BT_MLCP_SOLVER_H

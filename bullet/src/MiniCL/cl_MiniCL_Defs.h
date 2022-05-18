@@ -19,20 +19,18 @@ subject to the following restrictions:
 
 #include "MiniCL/cl.h"
 
-
 #define __kernel
 #define __global
 #define __local
-#define get_global_id(a)	__guid_arg
-#define get_local_id(a)		((__guid_arg) % gMiniCLNumOutstandingTasks)
-#define get_local_size(a)	(gMiniCLNumOutstandingTasks)
-#define get_group_id(a)		((__guid_arg) / gMiniCLNumOutstandingTasks)
+#define get_global_id(a) __guid_arg
+#define get_local_id(a) ((__guid_arg) % gMiniCLNumOutstandingTasks)
+#define get_local_size(a) (gMiniCLNumOutstandingTasks)
+#define get_group_id(a) ((__guid_arg) / gMiniCLNumOutstandingTasks)
 
 //static unsigned int as_uint(float val) { return *((unsigned int*)&val); }
 
-
-#define CLK_LOCAL_MEM_FENCE		0x01
-#define CLK_GLOBAL_MEM_FENCE	0x02
+#define CLK_LOCAL_MEM_FENCE 0x01
+#define CLK_GLOBAL_MEM_FENCE 0x02
 
 static void barrier(unsigned int a)
 {
@@ -53,12 +51,11 @@ struct float8
 
 	float8(float scalar)
 	{
-		s0=s1=s2=s3=s4=s5=s6=s7=scalar;
+		s0 = s1 = s2 = s3 = s4 = s5 = s6 = s7 = scalar;
 	}
 };
 
-
-float select( float arg0, float arg1, bool select)
+float select(float arg0, float arg1, bool select)
 {
 	if (select)
 		return arg0;
@@ -67,10 +64,9 @@ float select( float arg0, float arg1, bool select)
 
 #define __constant
 
-
 struct float3
 {
-	float x,y,z;
+	float x, y, z;
 
 	float3& operator+=(const float3& other)
 	{
@@ -87,19 +83,18 @@ struct float3
 		z -= other.z;
 		return *this;
 	}
-
 };
 
-static float dot(const float3&a ,const float3& b)
+static float dot(const float3& a, const float3& b)
 {
 	float3 tmp;
-	tmp.x = a.x*b.x;
-	tmp.y = a.y*b.y;
-	tmp.z = a.z*b.z;
-	return tmp.x+tmp.y+tmp.z;
+	tmp.x = a.x * b.x;
+	tmp.y = a.y * b.y;
+	tmp.z = a.z * b.z;
+	return tmp.x + tmp.y + tmp.z;
 }
 
-static float3 operator-(const float3& a,const float3& b)
+static float3 operator-(const float3& a, const float3& b)
 {
 	float3 tmp;
 	tmp.x = a.x - b.x;
@@ -108,7 +103,7 @@ static float3 operator-(const float3& a,const float3& b)
 	return tmp;
 }
 
-static float3 operator*(const float& scalar,const float3& b)
+static float3 operator*(const float& scalar, const float3& b)
 {
 	float3 tmp;
 	tmp.x = scalar * b.x;
@@ -117,7 +112,7 @@ static float3 operator*(const float& scalar,const float3& b)
 	return tmp;
 }
 
-static float3 operator*(const float3& a,const float& scalar)
+static float3 operator*(const float3& a, const float& scalar)
 {
 	float3 tmp;
 	tmp.x = a.x * scalar;
@@ -126,8 +121,7 @@ static float3 operator*(const float3& a,const float& scalar)
 	return tmp;
 }
 
-
-static float3 operator*(const float3& a,const float3& b)
+static float3 operator*(const float3& a, const float3& b)
 {
 	float3 tmp;
 	tmp.x = a.x * b.x;
@@ -135,14 +129,14 @@ static float3 operator*(const float3& a,const float3& b)
 	tmp.z = a.z * b.z;
 	return tmp;
 }
-	
 
 //ATTRIBUTE_ALIGNED16(struct) float4
 struct float4
 {
 	union
 	{
-		struct {
+		struct
+		{
 			float x;
 			float y;
 			float z;
@@ -155,13 +149,12 @@ struct float4
 
 	float4(float v0, float v1, float v2, float v3)
 	{
-		x=v0;
-		y=v1;
-		z=v2;
-		w=v3;
-
+		x = v0;
+		y = v1;
+		z = v2;
+		w = v3;
 	}
-	float4(float3 xyz, float scalarW) 
+	float4(float3 xyz, float scalarW)
 	{
 		x = xyz.x;
 		y = xyz.y;
@@ -169,33 +162,29 @@ struct float4
 		w = scalarW;
 	}
 
-	float4(float v) 
+	float4(float v)
 	{
-		x = y = z = w = v; 
+		x = y = z = w = v;
 	}
 	float4 operator*(const float4& other)
 	{
 		float4 tmp;
-		tmp.x = x*other.x;
-		tmp.y = y*other.y;
-		tmp.z = z*other.z;
-		tmp.w = w*other.w;
+		tmp.x = x * other.x;
+		tmp.y = y * other.y;
+		tmp.z = z * other.z;
+		tmp.w = w * other.w;
 		return tmp;
 	}
-
-	
 
 	float4 operator*(const float& other)
 	{
 		float4 tmp;
-		tmp.x = x*other;
-		tmp.y = y*other;
-		tmp.z = z*other;
-		tmp.w = w*other;
+		tmp.x = x * other;
+		tmp.y = y * other;
+		tmp.z = z * other;
+		tmp.w = w * other;
 		return tmp;
 	}
-
-	
 
 	float4& operator+=(const float4& other)
 	{
@@ -215,7 +204,7 @@ struct float4
 		return *this;
 	}
 
-	float4& operator *=(float scalar)
+	float4& operator*=(float scalar)
 	{
 		x *= scalar;
 		y *= scalar;
@@ -223,23 +212,18 @@ struct float4
 		w *= scalar;
 		return (*this);
 	}
-
-	
-	
-	
-	
 };
 
 static float4 fabs(const float4& a)
 {
 	float4 tmp;
-	tmp.x = a.x < 0.f ? 0.f  : a.x;
-	tmp.y = a.y < 0.f ? 0.f  : a.y;
-	tmp.z = a.z < 0.f ? 0.f  : a.z;
-	tmp.w = a.w < 0.f ? 0.f  : a.w;
+	tmp.x = a.x < 0.f ? 0.f : a.x;
+	tmp.y = a.y < 0.f ? 0.f : a.y;
+	tmp.z = a.z < 0.f ? 0.f : a.z;
+	tmp.w = a.w < 0.f ? 0.f : a.w;
 	return tmp;
 }
-static float4 operator+(const float4& a,const float4& b)
+static float4 operator+(const float4& a, const float4& b)
 {
 	float4 tmp;
 	tmp.x = a.x + b.x;
@@ -249,23 +233,21 @@ static float4 operator+(const float4& a,const float4& b)
 	return tmp;
 }
 
-
-static float8 operator+(const float8& a,const float8& b)
+static float8 operator+(const float8& a, const float8& b)
 {
 	float8 tmp(0);
-	tmp.s0  = a.s0 + b.s0;
-	tmp.s1  = a.s1 + b.s1;
-	tmp.s2  = a.s2 + b.s2;
-	tmp.s3  = a.s3 + b.s3;
-	tmp.s4  = a.s4 + b.s4;
-	tmp.s5  = a.s5 + b.s5;
-	tmp.s6  = a.s6 + b.s6;
-	tmp.s7  = a.s7 + b.s7;
+	tmp.s0 = a.s0 + b.s0;
+	tmp.s1 = a.s1 + b.s1;
+	tmp.s2 = a.s2 + b.s2;
+	tmp.s3 = a.s3 + b.s3;
+	tmp.s4 = a.s4 + b.s4;
+	tmp.s5 = a.s5 + b.s5;
+	tmp.s6 = a.s6 + b.s6;
+	tmp.s7 = a.s7 + b.s7;
 	return tmp;
 }
 
-
-static float4 operator-(const float4& a,const float4& b)
+static float4 operator-(const float4& a, const float4& b)
 {
 	float4 tmp;
 	tmp.x = a.x - b.x;
@@ -275,21 +257,21 @@ static float4 operator-(const float4& a,const float4& b)
 	return tmp;
 }
 
-static float8 operator-(const float8& a,const float8& b)
+static float8 operator-(const float8& a, const float8& b)
 {
 	float8 tmp(0);
-	tmp.s0  = a.s0 - b.s0;
-	tmp.s1  = a.s1 - b.s1;
-	tmp.s2  = a.s2 - b.s2;
-	tmp.s3  = a.s3 - b.s3;
-	tmp.s4  = a.s4 - b.s4;
-	tmp.s5  = a.s5 - b.s5;
-	tmp.s6  = a.s6 - b.s6;
-	tmp.s7  = a.s7 - b.s7;
+	tmp.s0 = a.s0 - b.s0;
+	tmp.s1 = a.s1 - b.s1;
+	tmp.s2 = a.s2 - b.s2;
+	tmp.s3 = a.s3 - b.s3;
+	tmp.s4 = a.s4 - b.s4;
+	tmp.s5 = a.s5 - b.s5;
+	tmp.s6 = a.s6 - b.s6;
+	tmp.s7 = a.s7 - b.s7;
 	return tmp;
 }
 
-static float4 operator*(float a,const float4& b)
+static float4 operator*(float a, const float4& b)
 {
 	float4 tmp;
 	tmp.x = a * b.x;
@@ -299,85 +281,78 @@ static float4 operator*(float a,const float4& b)
 	return tmp;
 }
 
-static float4 operator/(const float4& b,float a)
+static float4 operator/(const float4& b, float a)
 {
 	float4 tmp;
-	tmp.x = b.x/a;
-	tmp.y = b.y/a;
-	tmp.z = b.z/a;
-	tmp.w = b.w/a;
+	tmp.x = b.x / a;
+	tmp.y = b.y / a;
+	tmp.z = b.z / a;
+	tmp.w = b.w / a;
 	return tmp;
 }
 
-
-
-
-
-static float dot(const float4&a ,const float4& b)
+static float dot(const float4& a, const float4& b)
 {
 	float4 tmp;
-	tmp.x = a.x*b.x;
-	tmp.y = a.y*b.y;
-	tmp.z = a.z*b.z;
-	tmp.w = a.w*b.w;
-	return tmp.x+tmp.y+tmp.z+tmp.w;
+	tmp.x = a.x * b.x;
+	tmp.y = a.y * b.y;
+	tmp.z = a.z * b.z;
+	tmp.w = a.w * b.w;
+	return tmp.x + tmp.y + tmp.z + tmp.w;
 }
 
-static float length(const float4&a)
+static float length(const float4& a)
 {
-	float l = sqrtf(a.x*a.x+a.y*a.y+a.z*a.z);
+	float l = sqrtf(a.x * a.x + a.y * a.y + a.z * a.z);
 	return l;
 }
 
-static float4 normalize(const float4&a)
+static float4 normalize(const float4& a)
 {
 	float4 tmp;
 	float l = length(a);
-	tmp = 1.f/l*a;
+	tmp = 1.f / l * a;
 	return tmp;
 }
 
-
-
-static float4 cross(const float4&a ,const float4& b)
+static float4 cross(const float4& a, const float4& b)
 {
 	float4 tmp;
-	tmp.x =  a.y*b.z - a.z*b.y;
-	tmp.y = -a.x*b.z + a.z*b.x;
-	tmp.z =  a.x*b.y - a.y*b.x;
+	tmp.x = a.y * b.z - a.z * b.y;
+	tmp.y = -a.x * b.z + a.z * b.x;
+	tmp.z = a.x * b.y - a.y * b.x;
 	tmp.w = 0.f;
 	return tmp;
 }
 
-static float max(float a, float b) 
+static float max(float a, float b)
 {
 	return (a >= b) ? a : b;
 }
 
-
-static float min(float a, float b) 
+static float min(float a, float b)
 {
 	return (a <= b) ? a : b;
 }
 
-static float fmax(float a, float b) 
+static float fmax(float a, float b)
 {
 	return (a >= b) ? a : b;
 }
 
-static float fmin(float a, float b) 
+static float fmin(float a, float b)
 {
 	return (a <= b) ? a : b;
 }
 
 struct int2
 {
-	int x,y;
+	int x, y;
 };
 
 struct uint2
 {
-	unsigned int x,y;
+	unsigned int x, y;
 };
 
 //typedef int2 uint2;
@@ -386,12 +361,12 @@ typedef unsigned int uint;
 
 struct int4
 {
-	int x,y,z,w;
+	int x, y, z, w;
 };
 
 struct uint4
 {
-	unsigned int x,y,z,w;
+	unsigned int x, y, z, w;
 	uint4() {}
 	uint4(uint val) { x = y = z = w = val; }
 	uint4& operator+=(const uint4& other)
@@ -403,7 +378,7 @@ struct uint4
 		return *this;
 	}
 };
-static uint4 operator+(const uint4& a,const uint4& b)
+static uint4 operator+(const uint4& a, const uint4& b)
 {
 	uint4 tmp;
 	tmp.x = a.x + b.x;
@@ -412,7 +387,7 @@ static uint4 operator+(const uint4& a,const uint4& b)
 	tmp.w = a.w + b.w;
 	return tmp;
 }
-static uint4 operator-(const uint4& a,const uint4& b)
+static uint4 operator-(const uint4& a, const uint4& b)
 {
 	uint4 tmp;
 	tmp.x = a.x - b.x;
@@ -427,13 +402,10 @@ static uint4 operator-(const uint4& a,const uint4& b)
 #define native_cos cosf
 #define native_powr powf
 
-#define GUID_ARG ,int __guid_arg
-#define GUID_ARG_VAL ,__guid_arg
-
+#define GUID_ARG , int __guid_arg
+#define GUID_ARG_VAL , __guid_arg
 
 #define as_int(a) (*((int*)&(a)))
 
 extern "C" int gMiniCLNumOutstandingTasks;
 //	extern "C" void __kernel_func();
-
-
